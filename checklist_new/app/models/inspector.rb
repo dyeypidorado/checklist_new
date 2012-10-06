@@ -14,7 +14,7 @@ class Inspector < ActiveRecord::Base
 
   # attr_accessible :title, :body
   has_many :reports
-  #has_many :answers, through: :reports
+  has_many :answers, through: :reports
 
   protected
     def self.find_first_by_auth_conditions(warden_conditions)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006175805) do
+ActiveRecord::Schema.define(:version => 20121006182358) do
 
   create_table "admins", :id => false, :force => true do |t|
     t.string   "email",                            :default => "", :null => false
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(:version => 20121006175805) do
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
+
+  create_table "answers", :id => false, :force => true do |t|
+    t.string   "uuid",         :limit => 36
+    t.string   "value"
+    t.integer  "list_item_id"
+    t.integer  "inspector_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "answers", ["inspector_id"], :name => "index_answers_on_inspector_id"
+  add_index "answers", ["list_item_id"], :name => "index_answers_on_list_item_id"
 
   create_table "inspectors", :id => false, :force => true do |t|
     t.string   "email",                            :default => "", :null => false
@@ -88,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20121006175805) do
     t.integer  "inspector_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.text     "comment"
   end
 
   add_index "reports", ["inspector_id"], :name => "index_reports_on_inspector_id"
