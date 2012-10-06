@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006153719) do
+ActiveRecord::Schema.define(:version => 20121006164538) do
 
   create_table "admins", :id => false, :force => true do |t|
     t.string   "email",                            :default => "", :null => false
@@ -28,6 +28,30 @@ ActiveRecord::Schema.define(:version => 20121006153719) do
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
+
+  create_table "list_items", :id => false, :force => true do |t|
+    t.string   "uuid",        :limit => 36
+    t.string   "title"
+    t.text     "description"
+    t.string   "answer_kind"
+    t.text     "selection"
+    t.integer  "list_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "list_items", ["list_id"], :name => "index_list_items_on_list_id"
+
+  create_table "lists", :id => false, :force => true do |t|
+    t.string   "uuid",        :limit => 36
+    t.string   "name"
+    t.text     "description"
+    t.integer  "admin_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "lists", ["admin_id"], :name => "index_lists_on_admin_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
