@@ -2,7 +2,6 @@ class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-
   include Extensions::UUID
 
   devise :database_authenticatable, :trackable,  #, :registerable, :recoverable, :rememberable, :validatable
@@ -11,10 +10,10 @@ class Admin < ActiveRecord::Base
   attr_accessor :login
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :username, :login#, :remember_me
-  #attr_accessible :list_ids
+  attr_accessible :email, :password, :password_confirmation, :username, :login  #, :remember_me
+  attr_accessible :list_ids
   #attr_accessible :title, :body
-  #has_many :lists
+  has_many :lists
 
   protected
     def self.find_first_by_auth_conditions(warden_conditions)
