@@ -5,7 +5,7 @@ class List < ActiveRecord::Base
 
   belongs_to :admin
   has_many :list_items
-  #has_many :reports
+  has_many :reports
 
-  #accepts_nested_attributes_for :reports
+  accepts_nested_attributes_for :reports
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006164538) do
+ActiveRecord::Schema.define(:version => 20121006175805) do
 
   create_table "admins", :id => false, :force => true do |t|
     t.string   "email",                            :default => "", :null => false
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(:version => 20121006164538) do
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
+
+  create_table "inspectors", :id => false, :force => true do |t|
+    t.string   "email",                            :default => "", :null => false
+    t.string   "encrypted_password",               :default => "", :null => false
+    t.integer  "sign_in_count",                    :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "uuid",               :limit => 36
+    t.string   "username"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
+
+  add_index "inspectors", ["email"], :name => "index_inspectors_on_email", :unique => true
 
   create_table "list_items", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -65,5 +81,16 @@ ActiveRecord::Schema.define(:version => 20121006164538) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "reports", :id => false, :force => true do |t|
+    t.string   "uuid",         :limit => 36
+    t.integer  "list_id"
+    t.integer  "inspector_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "reports", ["inspector_id"], :name => "index_reports_on_inspector_id"
+  add_index "reports", ["list_id"], :name => "index_reports_on_list_id"
 
 end
