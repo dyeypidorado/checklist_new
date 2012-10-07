@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006182358) do
+ActiveRecord::Schema.define(:version => 20121007083410) do
 
   create_table "admins", :id => false, :force => true do |t|
     t.string   "email",                            :default => "", :null => false
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(:version => 20121006182358) do
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",         :limit => 36
     t.string   "value"
-    t.integer  "list_item_id"
-    t.integer  "inspector_id"
+    t.string   "list_item_id"
+    t.string   "inspector_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.string   "report_id"
   end
 
   add_index "answers", ["inspector_id"], :name => "index_answers_on_inspector_id"
@@ -63,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20121006182358) do
     t.text     "description"
     t.string   "answer_kind"
     t.text     "selection"
-    t.integer  "list_id"
+    t.string   "list_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20121006182358) do
     t.string   "uuid",        :limit => 36
     t.string   "name"
     t.text     "description"
-    t.integer  "admin_id"
+    t.string   "admin_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -96,8 +97,8 @@ ActiveRecord::Schema.define(:version => 20121006182358) do
 
   create_table "reports", :id => false, :force => true do |t|
     t.string   "uuid",         :limit => 36
-    t.integer  "list_id"
-    t.integer  "inspector_id"
+    t.string   "list_id"
+    t.string   "inspector_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.text     "comment"
