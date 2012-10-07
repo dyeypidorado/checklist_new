@@ -4,5 +4,13 @@ ChecklistNew::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/cms', :as => 'rails_admin'
 
+  resources :lists do
+    member do
+      get "report"
+    end
+  end
+
+  resources :reports, only: :create
+
   root to: 'home#index'
 end
