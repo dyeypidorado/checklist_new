@@ -1,0 +1,7 @@
+= render "details"
+= form_for @report do |f|
+  = f.hidden_field :list_id
+  = f.text_field :comment
+  = f.fields_for :answers do |b|
+    = render "answers/answer_fields", f: b
+  = f.submit "Submit report"
