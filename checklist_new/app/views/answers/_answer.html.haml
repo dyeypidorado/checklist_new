@@ -1,0 +1,9 @@
+- @answer ||= answer
+- list_item = answer.list_item
+.title= list_item.title
+.description= list_item.description
+.answers
+  = render "answers/yesno" if list_item.answer_kind == "yes/no"
+  = render "answers/selection" if list_item.answer_kind == "selection"
+  = render "answers/longtext" if list_item.answer_kind == "longtext"
+

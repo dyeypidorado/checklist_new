@@ -1,0 +1,9 @@
+- @answer = f.object
+- list_item = @answer.list_item
+.title= list_item.title
+.description= list_item.description
+.answers
+  = render "answers/yesno", f: f if list_item.answer_kind == "yes/no"
+  = render "answers/selection", f: f if list_item.answer_kind == "selection"
+  = render "answers/longtext", f: f if list_item.answer_kind == "longtext"
+
