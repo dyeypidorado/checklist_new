@@ -10,6 +10,10 @@ ChecklistNew::Application.routes.draw do
     end
   end
 
+  resources :lists do
+    resources :reports, only: :index
+  end
+
   resources :reports, only: :create
 
   root to: 'home#index'

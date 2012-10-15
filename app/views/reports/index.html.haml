@@ -1,0 +1,17 @@
+- model_class = Report
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:comment)
+      %th=#t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @reports.each do |report|
+      %tr
+        %td= report.id  # link_to report.id, report
+        %td= report.created_at
+        %td= report.comment
+        %td=# link_to "Prepare new report", [:report, list]
