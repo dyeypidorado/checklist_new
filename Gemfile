@@ -26,6 +26,7 @@ gem "meta_search",    '>= 1.1.0.pre'
 gem 'pry'
 gem 'rails_admin'
 gem 'uuidtools'
+gem 'less-rails'
 
 group :test do
   gem 'spork'
