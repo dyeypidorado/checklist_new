@@ -6,6 +6,6 @@ class ListItem < ActiveRecord::Base
   serialize :selection
 
   def answer_kind_enum
-    ['yes/no','longtext','selection']
+    ['yes/no','longtext','selection', 'checkbox']
   end
 end
