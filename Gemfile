@@ -28,6 +28,7 @@ gem 'rails_admin'
 gem 'uuidtools'
 gem 'less-rails'
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 group :test do
   gem 'spork'
