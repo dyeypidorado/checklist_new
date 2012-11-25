@@ -27,6 +27,7 @@ gem 'pry'
 gem 'rails_admin'
 gem 'uuidtools'
 gem 'less-rails'
+gem 'capistrano'
 
 group :test do
   gem 'spork'
