@@ -35,7 +35,7 @@ end
 
 desc "database"
 task :copy_database_yml do
-  upload("config/database.yml")
+  upload("config/database.yml", release_path + '/config/database.yml')
 end
 
 
