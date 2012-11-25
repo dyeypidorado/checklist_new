@@ -33,6 +33,12 @@ namespace :deploy do
   end
 end
 
+desc "database"
+task :copy_database_yml do
+  upload("config/database.yml")
+end
+
+
 namespace :assets do
   desc "Compress assets in a local file"
   task :compress_assets do
@@ -53,4 +59,5 @@ namespace :assets do
 end
 
 before "deploy:update_code", "assets:compress_assets"
+after "deploy:update_code", "copy_database_yml"
 after "deploy:create_symlink", "assets:upload_assets"
