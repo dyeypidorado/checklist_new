@@ -24,8 +24,8 @@ set :user, "ubuntu"
 # ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "blank")]
 
 set :rails_env, "production"
-set :domain, "ec2-175-41-151-85.ap-southeast-1.compute.amazonaws.com"
-server "ec2-175-41-151-85.ap-southeast-1.compute.amazonaws.com", :app, :web, :db, :primary => true 
+set :domain, "checklist.loudcloud.ph"
+server "checklist.loudcloud.ph", :app, :web, :db, :primary => true 
  
 namespace :deploy do
   task :restart, :roles => :web do
